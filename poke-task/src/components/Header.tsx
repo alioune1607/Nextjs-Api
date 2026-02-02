@@ -1,0 +1,54 @@
+'use client';
+import Link from 'next/link';
+import { useLanguage } from '@/context/LanguageContext';
+import { useEffect } from 'react';
+
+export default function Header() {
+  const { dictionary, setLang } = useLanguage();
+
+  // Esto carga el JS de bootstrap para que funcione el menú desplegable
+  useEffect(() => {
+    require("bootstrap/dist/js/bootstrap.bundle.min.js");
+  }, []);
+
+  return (
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4 mb-4">
+      <div className="container-fluid">
+        <Link className="navbar-brand" href="/">PokeNext</Link>
+        
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav me-auto">
+            <li className="nav-item">
+                <Link className="nav-link" href="/">{dictionary.navbar.home}</Link>
+            </li>
+            
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                {dictionary.navbar.generations}
+              </a>
+              <ul className="dropdown-menu">
+                <li><Link className="dropdown-item" href="/generation/1">{dictionary.navbar.gen1}</Link></li>
+                <li><Link className="dropdown-item" href="/generation/2">{dictionary.navbar.gen2}</Link></li>
+                <li><Link className="dropdown-item" href="/generation/3">{dictionary.navbar.gen3}</Link></li>
+              </ul>
+            </li>
+            
+            <li className="nav-item">
+                <Link className="nav-link" href="/contact">{dictionary.navbar.contact}</Link>
+            </li>
+          </ul>
+
+          <div className="d-flex gap-2">
+            <button onClick={() => setLang('sp')} className="btn btn-sm btn-outline-light">🇪🇸 SP</button>
+            <button onClick={() => setLang('en')} className="btn btn-sm btn-outline-light">in EN</button>
+            <button onClick={() => setLang('fr')} className="btn btn-sm btn-outline-light">🇫🇷 FR</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+}
