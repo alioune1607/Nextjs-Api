@@ -1,13 +1,16 @@
 export const dictionaries = {
   sp: {
-    navbar: { 
-      home: "Inicio", 
-      contact: "Contacto", 
-      generations: "Generaciones",
-      gen1: "1ª Generación", 
-      gen2: "2ª Generación", 
-      gen3: "3ª Generación" 
-    },
+    // Modifica la sección 'navbar'
+navbar: { 
+  home: "Inicio", 
+  contact: "Contacto", 
+  generations: "Generaciones",
+  gen1: "1ª Generación", 
+  gen2: "2ª Generación", 
+  others: "Otras",          // El título del grupo
+  gen3: "3ª Generación",    // La que dará error
+  gen4: "4ª Generación"     // La que funcionará
+},
     home: { 
       welcome: "Bienvenido a la PokeApp del IES Cura Valera", 
       random: "Tu Pokémon Aleatorio de hoy:" 
